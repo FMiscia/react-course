@@ -1,20 +1,17 @@
 import './App.css'
 
 function App() {
-  const toggle = false
-  return (
-      <div className="App">
-          {toggle ? (
-              <div className="card">
-                  <button onClick={() => {}}>Button 0</button>
-              </div>
-          ) : (
-              <div className="card">
-                  <button onClick={() => {}}>Button 0</button>
-              </div>
-          )}
-      </div>
-  )
+    const contacts = ["Alessandro", "Luca", "Paolo", "Mario"]
+    return (
+        <div className="App">
+            {contacts.map((it) => (
+                <div className="card">
+                    <h3>{it}</h3>
+                    <button onClick={() => {}}>Click Me</button>
+                </div>
+            ))}
+        </div>
+    )
 }
 
 export default App
