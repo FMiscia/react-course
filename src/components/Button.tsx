@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react'
+import { ButtonHTMLAttributes } from 'react'
 import './Button.css'
 
 function Button({ label, ...rest }: ButtonProps) {
@@ -7,6 +7,6 @@ function Button({ label, ...rest }: ButtonProps) {
 
 type ButtonProps = {
     label: string
-} & HTMLAttributes<HTMLButtonElement>
+} & ButtonHTMLAttributes<HTMLButtonElement>
 
 export default Button

@@ -13,6 +13,14 @@ function App() {
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
     const [notes, setNotes] = useState('')
+
+    const resetForm = () => {
+        setName('')
+        setEmail('')
+        setNotes('')
+        setPhone('')
+    }
+
     return (
         <div className="App">
             <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -51,6 +59,7 @@ function App() {
                             phone
                         }
                         setList([contact, ...list])
+                        resetForm()
                     }}
                 />
             </div>
