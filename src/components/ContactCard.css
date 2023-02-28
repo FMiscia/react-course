@@ -11,3 +11,7 @@
   background-color: #2f2f2f;
   box-shadow: 2px 5px rgb(21, 21, 21);
 }
+
+.App-ContactCard .ContactCardNotes {
+    white-space: pre-wrap;
+} 

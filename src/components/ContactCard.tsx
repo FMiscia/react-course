@@ -8,7 +8,7 @@ function ContactCard(props: ContactCardProps) {
             <h3>{props.name}</h3>
             <p>{props.email}</p>
             <p>{props.phone}</p>
-            <p>{props.notes}</p>
+            <p className="ContactCardNotes">{props.notes}</p>
             <Button label="Email" />
         </div>
     )
