@@ -2,7 +2,11 @@ import { ButtonHTMLAttributes } from 'react'
 import './Button.css'
 
 function Button({ label, className, ...rest }: ButtonProps) {
-    return <button className={`App-Button ${className}`}  {...rest}>{label}</button>
+    return (
+        <button className={`App-Button ${className ?? ''}`} {...rest}>
+            {label}
+        </button>
+    )
 }
 
 type ButtonProps = {
