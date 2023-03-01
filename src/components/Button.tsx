@@ -1,8 +1,8 @@
 import { ButtonHTMLAttributes } from 'react'
 import './Button.css'
 
-function Button({ label, ...rest }: ButtonProps) {
-    return <button className='App-Button' {...rest}>{label}</button>
+function Button({ label, className, ...rest }: ButtonProps) {
+    return <button className={`App-Button ${className}`}  {...rest}>{label}</button>
 }
 
 type ButtonProps = {

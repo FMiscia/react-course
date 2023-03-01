@@ -1,10 +1,10 @@
 import { TextareaHTMLAttributes } from 'react'
 import './TextArea.css'
 
-function TextArea({label, ...textAreaProps}: TextAreaProps) {
+function TextArea({label, className, ...textAreaProps}: TextAreaProps) {
 
     return (
-        <div className='App-TextArea'>
+        <div className={`App-TextArea ${className}`}>
             <div className="TextAreaLabel">{label}</div>
             <textarea {...textAreaProps} />
         </div>

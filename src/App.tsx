@@ -6,6 +6,7 @@ import Button from './components/Button'
 import Input from './components/Input'
 import TextArea from './components/TextArea'
 import { uid } from './utils'
+import Card from './components/Card'
 
 function App() {
     const [list, setList] = useState(contacts)
@@ -23,7 +24,7 @@ function App() {
 
     return (
         <div className="App">
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <Card style={{ flexDirection: 'column', margin: 8 }}>
                 <Input
                     value={name}
                     label="name"
@@ -49,8 +50,12 @@ function App() {
                     onChange={(e) => setNotes(e.target.value)}
                 />
                 <Button
-                    label="ADD"
+                    style={{ marginTop: 4 }}
+                    label="AGGIUNGI CONTATTO"
                     onClick={() => {
+                        if (!email || !name) {
+                            return alert("Nome e Email sono obbligatori")
+                        }
                         const contact = {
                             id: uid(),
                             email,
@@ -62,7 +67,7 @@ function App() {
                         resetForm()
                     }}
                 />
-            </div>
+            </Card>
             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                 {list.map((it) => (
                     <ContactCard key={it.id} {...it} />

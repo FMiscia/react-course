@@ -1,16 +1,19 @@
 import { ContactModel } from '../types'
 import Button from './Button'
+import Card from './Card'
 import './ContactCard.css'
 
 function ContactCard(props: ContactCardProps) {
     return (
-        <div className="App-ContactCard">
+        <Card className="App-ContactCard">
             <h3>{props.name}</h3>
             <p>{props.email}</p>
             <p>{props.phone}</p>
-            <p className="ContactCardNotes">{props.notes}</p>
+            <p className="ContactCardNotes" style={{ flexGrow: 1 }}>
+                {props.notes}
+            </p>
             <Button label="Email" />
-        </div>
+        </Card>
     )
 }
 
