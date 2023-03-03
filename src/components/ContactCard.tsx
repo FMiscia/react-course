@@ -1,5 +1,4 @@
-import { useContext, useState } from 'react'
-import { SimpleContext } from '../App'
+import { useState } from 'react'
 import { ContactModel } from '../types'
 import Button from './Button'
 import Card from './Card'
@@ -13,7 +12,6 @@ function ContactCard(props: ContactCardProps) {
     const [email, setEmail] = useState(props.email)
     const [phone, setPhone] = useState(props.phone)
     const [notes, setNotes] = useState(props.notes)
-    const contextValue = useContext(SimpleContext)
 
     return (
         <Card className="App-ContactCard">
@@ -50,7 +48,7 @@ function ContactCard(props: ContactCardProps) {
                     <p>{props.email}</p>
                     <p>{props.phone}</p>
                     <p className="ContactCardNotes" style={{ flexGrow: 1 }}>
-                        {contextValue} {props.notes}
+                        {props.notes}
                     </p>
                 </>
             )}

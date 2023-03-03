@@ -2,7 +2,8 @@ import ContactCard from '../components/ContactCard'
 import { useContext } from 'react'
 import { ContactModel } from '../types'
 import CreateContactForm from '../components/form/CreateContactForm'
-import { ContactsContext, ContactsDispatchContext } from '../App'
+import { ContactsContext, ContactsDispatchContext } from '../context/ContactsProvider'
+
 
 function Contacts() {
     const dispatch = useContext(ContactsDispatchContext)
