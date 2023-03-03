@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ContactModel } from '../../types'
 import { uid } from '../../utils'
 import Button from '../Button'
@@ -11,6 +11,7 @@ function CreateContactForm(props: CreateContactFormProps) {
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
     const [notes, setNotes] = useState('')
+    const [isOnline, setIsOnline] = useState(true)
 
     const resetForm = () => {
         setName('')
@@ -18,6 +19,14 @@ function CreateContactForm(props: CreateContactFormProps) {
         setNotes('')
         setPhone('')
     }
+
+    useEffect(() => {
+        console.log('notes changed')
+
+        return () => {
+            console.log('Clean up')
+        }
+    }, [])
 
     const addCard = () => {
         const contact = {id: uid(), name, email, phone, notes}
@@ -53,7 +62,8 @@ function CreateContactForm(props: CreateContactFormProps) {
             />
             <Button
                 style={{ marginTop: 4 }}
-                label={'AGGIUNGI CONTATTO'}
+                disabled={!isOnline}
+                label={isOnline ? 'AGGIUNGI CONTATTO' : 'SEI OFFLINE'}
                 onClick={() => {
                     if (!email || !name) {
                         return alert('Nome e Email sono obbligatori')
