@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { SimpleContext } from '../App'
 import { ContactModel } from '../types'
 import Button from './Button'
 import Card from './Card'
@@ -12,6 +13,8 @@ function ContactCard(props: ContactCardProps) {
     const [email, setEmail] = useState(props.email)
     const [phone, setPhone] = useState(props.phone)
     const [notes, setNotes] = useState(props.notes)
+    const contextValue = useContext(SimpleContext)
+
     return (
         <Card className="App-ContactCard">
             {isEditMode ? (
@@ -47,7 +50,7 @@ function ContactCard(props: ContactCardProps) {
                     <p>{props.email}</p>
                     <p>{props.phone}</p>
                     <p className="ContactCardNotes" style={{ flexGrow: 1 }}>
-                        {props.notes}
+                        {contextValue} {props.notes}
                     </p>
                 </>
             )}
