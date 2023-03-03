@@ -1,12 +1,12 @@
 import ContactCard from '../components/ContactCard'
-import { contacts } from '../../db'
-import { useReducer } from 'react'
+import { useContext } from 'react'
 import { ContactModel } from '../types'
-import contactsReducer from '../reducers/ContactsReducer'
 import CreateContactForm from '../components/form/CreateContactForm'
+import { ContactsContext, ContactsDispatchContext } from '../App'
 
 function Contacts() {
-    const [list, dispatch] = useReducer(contactsReducer, contacts)
+    const dispatch = useContext(ContactsDispatchContext)
+    const list = useContext(ContactsContext)
 
     const deleteContact = (id: string) => {
         dispatch({ type: 'contacts/REMOVE', payload: id })
