@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import useIsOnline from '../../hooks/useIsOnline'
 import { ContactModel } from '../../types'
 import { uid } from '../../utils'
 import Button from '../Button'
@@ -11,7 +12,12 @@ function CreateContactForm(props: CreateContactFormProps) {
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
     const [notes, setNotes] = useState('')
-    const [isOnline, setIsOnline] = useState(true)
+    const isOnline = useIsOnline()
+
+    // Example of component update effect
+    // useEffect(() => {
+    //     alert(`sei diventato ${isOnline ? 'online' : 'offline'}`)
+    // }, [isOnline])
 
     const resetForm = () => {
         setName('')
@@ -20,16 +26,8 @@ function CreateContactForm(props: CreateContactFormProps) {
         setPhone('')
     }
 
-    useEffect(() => {
-        console.log('notes changed')
-
-        return () => {
-            console.log('Clean up')
-        }
-    }, [])
-
     const addCard = () => {
-        const contact = {id: uid(), name, email, phone, notes}
+        const contact = { id: uid(), name, email, phone, notes }
         props.onSubmit(contact)
         resetForm()
     }
