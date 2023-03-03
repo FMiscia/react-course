@@ -1,6 +1,6 @@
 import ContactCard from '../components/ContactCard'
 import { contacts } from '../../db'
-import { useState } from 'react'
+import { useReducer, useState } from 'react'
 import Button from '../components/Button'
 import Input from '../components/Input'
 import TextArea from '../components/TextArea'
@@ -8,8 +8,42 @@ import { uid } from '../utils'
 import Card from '../components/Card'
 import { ContactModel } from '../types'
 
+interface ContactsReducerAction {
+    type: 'contacts/ADD' | 'contacts/EDIT' | 'contacts/REMOVE'
+    payload: ContactModel | string
+}
+
+const contactsReducer = (state: ContactModel[], action: ContactsReducerAction): ContactModel[] => {
+    const type = action.type
+    const payload = action.payload
+    switch (type) {
+        case 'contacts/ADD': {
+            const newElement = payload as ContactModel
+            return [newElement, ...state]
+        }
+        case 'contacts/EDIT': {
+            const item = payload as ContactModel
+            const newList = state.map((it) => {
+                if (it.id === item.id) {
+                    return {
+                        ...it,
+                        ...item
+                    }
+                }
+                return it
+            })
+
+            return newList
+        }
+        case 'contacts/REMOVE': {
+            const newList = state.filter((it) => it.id !== payload)
+            return newList
+        }
+    }
+}
+
 function Contacts() {
-    const [list, setList] = useState(contacts)
+    const [list, dispatch] = useReducer(contactsReducer, contacts)
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
@@ -23,25 +57,15 @@ function Contacts() {
     }
 
     const deleteContact = (id: string) => {
-        const newList = list.filter((it) => it.id !== id)
-        setList(newList)
+        dispatch({ type: 'contacts/REMOVE', payload: id })
     }
 
-    const editContact = (model: ContactModel) => {
-        const newList = list.map((it) => {
-            if (it.id === model.id) {
-                return {
-                    ...it,
-                    ...model
-                }
-            }
-            return it
-        })
-        setList(newList)
+    const editContact = (contact: ContactModel) => {
+        dispatch({ type: 'contacts/EDIT', payload: contact })
     }
 
     const createContact = (contact: ContactModel) => {
-        setList([contact, ...list])
+        dispatch({ type: 'contacts/ADD', payload: contact })
     }
 
     return (
