@@ -18,16 +18,16 @@ function ContactCardForm({ initialValues, onSubmit }: ContactCardFormProps) {
                 label="Name"
             />
             <Input
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="Phone"
-                label="Phone"
-            />
-            <Input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
                 label="Email"
+            />
+            <Input
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="Phone"
+                label="Phone"
             />
             <Input
                 value={notes}
