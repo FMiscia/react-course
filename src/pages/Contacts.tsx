@@ -1,13 +1,15 @@
-import { useReducer } from 'react'
+import { useContext, useReducer } from 'react'
 import { contacts } from '../../db'
 import ContactCard from '../components/ContactCard'
 import { ContactModel } from '../types'
 import ContactCardForm from '../components/forms/ContactCardForm'
 import Card from '../components/Card'
 import contactsReducer, { ContactActionTypes } from '../reducers/contactsReducer'
+import { AppNumberContext } from '../App'
 
 function Contacts() {
     const [list, dispatch] = useReducer(contactsReducer, contacts)
+    const appNumber = useContext(AppNumberContext)
 
     const createContact = (model: ContactModel) => {
         dispatch({ type: ContactActionTypes.contacts_ADD, payload: model })
@@ -26,6 +28,7 @@ function Contacts() {
             <Card>
                 <ContactCardForm onSubmit={createContact} />
             </Card>
+            <h3>CONTEXT VALUE INSIDE CONTACTS: {appNumber}</h3>
             <div
                 style={{
                     display: 'flex',
