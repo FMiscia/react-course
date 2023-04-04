@@ -23,3 +23,20 @@ Each macro section of the course has its own branch, and, inside the branch, eve
 	- Render cycles
     - Immutability
 	- Put everything together with a form
+
+## 2. Intermediate Concepts [branch feat/intermediate-concepts]
+
+- Reducer
+	- useReducer hook
+	- Actions and State
+	- Convert an useState to an useReducer
+- Context
+	- Props drilling
+	- Root level reducer to handle app state
+	- Creation of a Provider Component
+- Component Lifecycle and Hooks
+	- How to handle component mount/unmount events
+	- React.StrictMode caveat
+	- Hooks concepts
+	- Creation of useIsOnline hook
+	- How to handle componentUpdate events
