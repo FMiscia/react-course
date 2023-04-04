@@ -4,7 +4,7 @@ import { ContactModel } from '../types'
 import ContactCardForm from '../components/forms/ContactCardForm'
 import Card from '../components/Card'
 import { ContactActionTypes } from '../reducers/contactsReducer'
-import { ContactsDispatchContext, ContactsStoreContext } from '../App'
+import { ContactsDispatchContext, ContactsStoreContext } from '../contexts/ContactsContext'
 
 function Contacts() {
     const list = useContext(ContactsStoreContext)
