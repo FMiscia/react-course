@@ -1,14 +1,25 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ContactModel } from '../../types'
 import { uid } from '../../utils'
 import Button from '../Button'
 import Input from '../Input'
+
+const offlineListener = window.addEventListener('offline', () => console.log('is offline'))
+const onlineListener = window.addEventListener('online', () => console.log('is online'))
 
 function ContactCardForm({ initialValues, onSubmit }: ContactCardFormProps) {
     const [name, setName] = useState(initialValues?.name ?? '')
     const [email, setEmail] = useState(initialValues?.email ?? '')
     const [phone, setPhone] = useState(initialValues?.phone ?? '')
     const [notes, setNotes] = useState(initialValues?.notes ?? '')
+
+    useEffect(() => {
+        console.log('mounted')
+        return () => {
+            console.log('unmounted')
+        }
+    }, [])
+
     return (
         <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
             <Input
