@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import useIsOnline from '../../hooks/useIsOnline'
 import { ContactModel } from '../../types'
 import { uid } from '../../utils'
 import Button from '../Button'
@@ -9,18 +10,7 @@ function ContactCardForm({ initialValues, onSubmit }: ContactCardFormProps) {
     const [email, setEmail] = useState(initialValues?.email ?? '')
     const [phone, setPhone] = useState(initialValues?.phone ?? '')
     const [notes, setNotes] = useState(initialValues?.notes ?? '')
-    const [isOnline, setIsOnline] = useState(true)
-
-    useEffect(() => {
-        const onlineCallback = () => setIsOnline(true)
-        const offlineCallback = () => setIsOnline(false)
-        window.addEventListener('offline', () => offlineCallback())
-        window.addEventListener('online', () => onlineCallback())
-        return () => {
-            window.removeEventListener('online', onlineCallback)
-            window.removeEventListener('offline', offlineCallback)
-        }
-    }, [])
+    const isOnline = useIsOnline()
 
     // useEffect(() => {
     //     console.log('Network availability change')
