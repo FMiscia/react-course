@@ -1,17 +1,23 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 import Contacts from './pages/Contacts'
 import './App.css'
+import { contacts } from '../db'
+import contactsReducer, { ContactsAction } from './reducers/contactsReducer'
 
-export const AppNumberContext = React.createContext(5)
+export const ContactsStoreContext = React.createContext(contacts)
+export const ContactsDispatchContext = React.createContext<React.Dispatch<ContactsAction>>(() => {})
 
 function App() {
-    
+    const [list, dispatch] = useReducer(contactsReducer, contacts)
+
     return (
-        <AppNumberContext.Provider value={111}>
-            <div className="App">
-                <Contacts />
-            </div>
-        </AppNumberContext.Provider>
+        <ContactsStoreContext.Provider value={list}>
+            <ContactsDispatchContext.Provider value={dispatch}>
+                <div className="App">
+                    <Contacts />
+                </div>
+            </ContactsDispatchContext.Provider>
+        </ContactsStoreContext.Provider>
     )
 }
 

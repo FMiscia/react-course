@@ -1,5 +1,4 @@
-import { useContext, useState } from 'react'
-import { AppNumberContext } from '../../App'
+import { useState } from 'react'
 import { ContactModel } from '../../types'
 import { uid } from '../../utils'
 import Button from '../Button'
@@ -10,7 +9,6 @@ function ContactCardForm({ initialValues, onSubmit }: ContactCardFormProps) {
     const [email, setEmail] = useState(initialValues?.email ?? '')
     const [phone, setPhone] = useState(initialValues?.phone ?? '')
     const [notes, setNotes] = useState(initialValues?.notes ?? '')
-    const appNumber = useContext(AppNumberContext)
     return (
         <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
             <Input
@@ -50,7 +48,6 @@ function ContactCardForm({ initialValues, onSubmit }: ContactCardFormProps) {
                     onSubmit(contact)
                 }}
             />
-            <h3>CONTEXT INSIDE FORM: {appNumber}</h3>
         </div>
     )
 }
