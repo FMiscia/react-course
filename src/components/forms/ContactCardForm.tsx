@@ -4,21 +4,27 @@ import { uid } from '../../utils'
 import Button from '../Button'
 import Input from '../Input'
 
-const offlineListener = window.addEventListener('offline', () => console.log('is offline'))
-const onlineListener = window.addEventListener('online', () => console.log('is online'))
-
 function ContactCardForm({ initialValues, onSubmit }: ContactCardFormProps) {
     const [name, setName] = useState(initialValues?.name ?? '')
     const [email, setEmail] = useState(initialValues?.email ?? '')
     const [phone, setPhone] = useState(initialValues?.phone ?? '')
     const [notes, setNotes] = useState(initialValues?.notes ?? '')
+    const [isOnline, setIsOnline] = useState(true)
 
     useEffect(() => {
-        console.log('mounted')
+        const onlineCallback = () => setIsOnline(true)
+        const offlineCallback = () => setIsOnline(false)
+        window.addEventListener('offline', () => offlineCallback())
+        window.addEventListener('online', () => onlineCallback())
         return () => {
-            console.log('unmounted')
+            window.removeEventListener('online', onlineCallback)
+            window.removeEventListener('offline', offlineCallback)
         }
     }, [])
+
+    // useEffect(() => {
+    //     console.log('Network availability change')
+    // }, [isOnline])
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
@@ -47,7 +53,8 @@ function ContactCardForm({ initialValues, onSubmit }: ContactCardFormProps) {
                 label="Notes"
             />
             <Button
-                label="SALVA"
+                label={isOnline ? "SALVA" : "DISABLED - OFFLINE"}
+                disabled={!isOnline}
                 onClick={() => {
                     const contact = {
                         id: initialValues?.id ?? uid(),
