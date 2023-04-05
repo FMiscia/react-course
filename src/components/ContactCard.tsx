@@ -21,8 +21,8 @@ function ContactCard({ name, email, notes, phone, id, onEdit, onDelete }: Contac
     ) : (
         <Card className='App-ContactCard'>
             <h3>{name}</h3>
-            <p>{phone}</p>
             <p>{email}</p>
+            <p>{phone}</p>
             <p style={{ flexGrow: 1 }}>{notes}</p>
             <Button onClick={() => setIsEdit(!isEdit)} label="EDIT" />
             <Button style={{ marginTop: '4px' }} onClick={() => onDelete?.(id)} label="DELETE" />
