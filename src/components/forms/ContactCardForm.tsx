@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import useIsOnline from '../../hooks/useIsOnline'
 import { ContactModel } from '../../types'
 import { uid } from '../../utils'
 import Button from '../Button'
 import Input from '../Input'
+import TextArea from '../TextArea'
 
 function ContactCardForm({ initialValues, onSubmit }: ContactCardFormProps) {
     const [name, setName] = useState(initialValues?.name ?? '')
@@ -36,7 +37,7 @@ function ContactCardForm({ initialValues, onSubmit }: ContactCardFormProps) {
                 placeholder="Phone"
                 label="Phone"
             />
-            <Input
+            <TextArea
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Notes"

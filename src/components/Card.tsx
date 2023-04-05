@@ -1,9 +1,11 @@
-import { HTMLAttributes, PropsWithChildren } from "react";
+import { HTMLAttributes, PropsWithChildren } from 'react'
 import './Card.css'
 
-function Card({className, ...rest}: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
+function Card({ className, children, ...rest }: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
     return (
-        <div className={`App-Card ${className ?? ''}`} {...rest} />
+        <div className={`App-Card ${className ?? ''}`} {...rest}>
+            {children}
+        </div>
     )
 }
 
