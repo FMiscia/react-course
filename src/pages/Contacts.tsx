@@ -5,10 +5,12 @@ import ContactCardForm from '../components/forms/ContactCardForm'
 import Card from '../components/Card'
 import { ContactActionTypes } from '../reducers/contactsReducer'
 import { ContactsDispatchContext, ContactsStoreContext } from '../contexts/ContactsContext'
+import useIsOnline from '../hooks/useIsOnline'
 
 function Contacts() {
     const list = useContext(ContactsStoreContext)
     const dispatch = useContext(ContactsDispatchContext)
+    const isOnline = useIsOnline()
 
     const createContact = (model: ContactModel) => {
         dispatch({ type: ContactActionTypes.contacts_ADD, payload: model })
@@ -25,7 +27,7 @@ function Contacts() {
     return (
         <div>
             <Card>
-                <ContactCardForm onSubmit={createContact} />
+                <ContactCardForm onSubmit={createContact} disabled={!isOnline} />
             </Card>
             <div
                 style={{

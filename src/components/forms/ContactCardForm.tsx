@@ -6,16 +6,11 @@ import Button from '../Button'
 import Input from '../Input'
 import TextArea from '../TextArea'
 
-function ContactCardForm({ initialValues, onSubmit }: ContactCardFormProps) {
+function ContactCardForm({ initialValues, onSubmit, disabled = false }: ContactCardFormProps) {
     const [name, setName] = useState(initialValues?.name ?? '')
     const [email, setEmail] = useState(initialValues?.email ?? '')
     const [phone, setPhone] = useState(initialValues?.phone ?? '')
     const [notes, setNotes] = useState(initialValues?.notes ?? '')
-    const isOnline = useIsOnline()
-
-    // useEffect(() => {
-    //     console.log('Network availability change')
-    // }, [isOnline])
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
@@ -44,8 +39,8 @@ function ContactCardForm({ initialValues, onSubmit }: ContactCardFormProps) {
                 label="Notes"
             />
             <Button
-                label={isOnline ? "SALVA" : "DISABLED - OFFLINE"}
-                disabled={!isOnline}
+                label={!disabled ? "SALVA" : "DISABLED"}
+                disabled={disabled}
                 onClick={() => {
                     const contact = {
                         id: initialValues?.id ?? uid(),
@@ -64,6 +59,7 @@ function ContactCardForm({ initialValues, onSubmit }: ContactCardFormProps) {
 type ContactCardFormProps = {
     onSubmit: (contact: ContactModel) => void
     initialValues?: ContactModel
+    disabled?: boolean
 }
 
 export default ContactCardForm

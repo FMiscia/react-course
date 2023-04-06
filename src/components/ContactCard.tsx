@@ -4,13 +4,16 @@ import Button from './Button'
 import Card from './Card'
 import './ContactCard.css'
 import ContactCardForm from './forms/ContactCardForm'
+import useIsOnline from '../hooks/useIsOnline'
 
 function ContactCard({ name, email, notes, phone, id, onEdit, onDelete }: ContactCardProps) {
     const [isEdit, setIsEdit] = useState(false)
+    const isOnline = useIsOnline()
     return isEdit ? (
         <Card className='App-ContactCard'>
             <ContactCardForm
                 initialValues={{ email, name, notes, phone, id }}
+                disabled={!isOnline}
                 onSubmit={(model) => {
                     setIsEdit(false)
                     onEdit?.(model)
