@@ -15,7 +15,6 @@ function Contacts() {
     const [sorting, setSorting] = useState<'natural' | 'ascending' | 'descending'>('natural')
     const [count, setCount] = useState(0)
     const currentList = useMemo(() => {
-        console.log('computing')
         const newList = [...list]
         if (sorting === 'natural') {
             return newList
@@ -31,9 +30,12 @@ function Contacts() {
         })
     }, [list, sorting])
 
-    const createContact = (model: ContactModel) => {
-        dispatch({ type: ContactActionTypes.contacts_ADD, payload: model })
-    }
+    const createContact = useMemo(
+        () => (model: ContactModel) => {
+            dispatch({ type: ContactActionTypes.contacts_ADD, payload: model })
+        },
+        [dispatch]
+    )
 
     const editContact = (model: ContactModel) => {
         dispatch({ type: ContactActionTypes.contacts_EDIT, payload: model })

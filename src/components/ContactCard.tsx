@@ -26,7 +26,7 @@ function ContactCard({ name, email, notes, phone, id, onEdit, onDelete }: Contac
             <h3>{name}</h3>
             <p>{email}</p>
             <p>{phone}</p>
-            <p style={{ flexGrow: 1 }}>{notes}</p>
+            <p style={{ flexGrow: 1, whiteSpace: 'pre-wrap' }}>{notes}</p>
             <Button onClick={() => setIsEdit(!isEdit)} label="EDIT" />
             <Button style={{ marginTop: '4px' }} onClick={() => onDelete?.(id)} label="DELETE" />
         </Card>

@@ -1,11 +1,16 @@
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import { ContactModel } from '../../types'
 import { uid } from '../../utils'
 import Button from '../Button'
 import Input from '../Input'
 import TextArea from '../TextArea'
 
-function ContactCardForm({ initialValues, onSubmit, disabled = false }: ContactCardFormProps) {
+function ContactCardFormNoMemo({
+    initialValues,
+    onSubmit,
+    disabled = false
+}: ContactCardFormProps) {
+    console.log('rendering')
     const [name, setName] = useState(initialValues?.name ?? '')
     const [email, setEmail] = useState(initialValues?.email ?? '')
     const [phone, setPhone] = useState(initialValues?.phone ?? '')
@@ -54,6 +59,8 @@ function ContactCardForm({ initialValues, onSubmit, disabled = false }: ContactC
         </div>
     )
 }
+
+const ContactCardForm = memo(ContactCardFormNoMemo)
 
 type ContactCardFormProps = {
     onSubmit: (contact: ContactModel) => void
