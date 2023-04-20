@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import { ContactModel } from '../types'
 import Button from './Button'
 import Card from './Card'
@@ -6,9 +6,10 @@ import './ContactCard.css'
 import ContactCardForm from './forms/ContactCardForm'
 import useIsOnline from '../hooks/useIsOnline'
 
-function ContactCard({ name, email, notes, phone, id, onEdit, onDelete }: ContactCardProps) {
+function ContactCardNoMemo({ name, email, notes, phone, id, onEdit, onDelete }: ContactCardProps) {
     const [isEdit, setIsEdit] = useState(false)
     const isOnline = useIsOnline()
+    console.log('rendering card')
     return isEdit ? (
         <Card className="App-ContactCard">
             <ContactCardForm
@@ -32,6 +33,8 @@ function ContactCard({ name, email, notes, phone, id, onEdit, onDelete }: Contac
         </Card>
     )
 }
+
+const ContactCard = memo(ContactCardNoMemo)
 
 type ContactCardProps = ContactModel & {
     onEdit?: (contact: ContactModel) => void

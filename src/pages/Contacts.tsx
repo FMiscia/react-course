@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from 'react'
+import { useCallback, useContext, useMemo, useState } from 'react'
 import ContactCard from '../components/ContactCard'
 import { ContactModel } from '../types'
 import ContactCardForm from '../components/forms/ContactCardForm'
@@ -30,20 +30,26 @@ function Contacts() {
         })
     }, [list, sorting])
 
-    const createContact = useMemo(
-        () => (model: ContactModel) => {
+    const createContact = useCallback(
+        (model: ContactModel) => {
             dispatch({ type: ContactActionTypes.contacts_ADD, payload: model })
         },
         [dispatch]
     )
 
-    const editContact = (model: ContactModel) => {
-        dispatch({ type: ContactActionTypes.contacts_EDIT, payload: model })
-    }
+    const editContact = useCallback(
+        (model: ContactModel) => {
+            dispatch({ type: ContactActionTypes.contacts_EDIT, payload: model })
+        },
+        [dispatch]
+    )
 
-    const deleteContact = (id: string) => {
-        dispatch({ type: ContactActionTypes.contacts_REMOVE, payload: id })
-    }
+    const deleteContact = useCallback(
+        (id: string) => {
+            dispatch({ type: ContactActionTypes.contacts_REMOVE, payload: id })
+        },
+        [dispatch]
+    )
 
     return (
         <div>

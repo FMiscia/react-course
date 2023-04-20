@@ -10,7 +10,6 @@ function ContactCardFormNoMemo({
     onSubmit,
     disabled = false
 }: ContactCardFormProps) {
-    console.log('rendering')
     const [name, setName] = useState(initialValues?.name ?? '')
     const [email, setEmail] = useState(initialValues?.email ?? '')
     const [phone, setPhone] = useState(initialValues?.phone ?? '')
