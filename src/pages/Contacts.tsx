@@ -1,4 +1,4 @@
-import { useCallback, useContext, useMemo, useState } from 'react'
+import { useCallback, useContext, useMemo, useRef, useState } from 'react'
 import ContactCard from '../components/ContactCard'
 import { ContactModel } from '../types'
 import ContactCardForm from '../components/forms/ContactCardForm'
@@ -12,23 +12,26 @@ function Contacts() {
     const list = useContext(ContactsStoreContext)
     const dispatch = useContext(ContactsDispatchContext)
     const isOnline = useIsOnline()
+    const [deletingIds, setDeletingIds] = useState<string[]>([])
     const [sorting, setSorting] = useState<'natural' | 'ascending' | 'descending'>('natural')
-    const [count, setCount] = useState(0)
+    const timeoutRef = useRef<{ [id: string]: number }>({})
     const currentList = useMemo(() => {
         const newList = [...list]
         if (sorting === 'natural') {
-            return newList
+            return newList.filter((it) => !deletingIds.includes(it.id))
         }
-        return newList.sort((a, b) => {
-            if (a.name < b.name) {
-                return sorting === 'ascending' ? -1 : 1
-            }
-            if (a.name > b.name) {
-                return sorting === 'ascending' ? 1 : -1
-            }
-            return 0
-        })
-    }, [list, sorting])
+        return newList
+            .sort((a, b) => {
+                if (a.name < b.name) {
+                    return sorting === 'ascending' ? -1 : 1
+                }
+                if (a.name > b.name) {
+                    return sorting === 'ascending' ? 1 : -1
+                }
+                return 0
+            })
+            .filter((it) => !deletingIds.includes(it.id))
+    }, [deletingIds, list, sorting])
 
     const createContact = useCallback(
         (model: ContactModel) => {
@@ -44,20 +47,35 @@ function Contacts() {
         [dispatch]
     )
 
-    const deleteContact = useCallback(
+    const confirmDeleteContact = useCallback(
         (id: string) => {
             dispatch({ type: ContactActionTypes.contacts_REMOVE, payload: id })
+            // Setter with callback here since we are in a set timeout.
+            // The current state is an old one (previous render)
+            setDeletingIds((deletingIds) => deletingIds.filter((it) => it !== id))
+            timeoutRef.current[id] = -1
         },
         [dispatch]
     )
 
+    const deleteContact = useCallback(
+        (id: string) => {
+            setDeletingIds([...deletingIds, id])
+            const timeoutId = setTimeout(() => confirmDeleteContact(id), 3000)
+            timeoutRef.current[id] = timeoutId
+        },
+        [confirmDeleteContact, deletingIds]
+    )
+
+    const undoDeletion = (id: string) => {
+        const newIds = deletingIds.filter((it) => it !== id)
+        setDeletingIds(newIds)
+        clearTimeout(timeoutRef.current?.[id])
+        timeoutRef.current[id] = -1
+    }
+
     return (
         <div>
-            <Button
-                style={{ marginLeft: 8 }}
-                label={`INCREASE COUNT: ${count}`}
-                onClick={() => setCount(count + 1)}
-            />
             <Card>
                 <ContactCardForm onSubmit={createContact} disabled={!isOnline} />
             </Card>
@@ -86,6 +104,22 @@ function Contacts() {
                     secondary={sorting !== 'descending'}
                     onClick={() => setSorting('descending')}
                 />
+            </div>
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                    marginTop: 8
+                }}>
+                {deletingIds.map((it) => (
+                    <Button
+                        key={it}
+                        style={{ marginLeft: 8 }}
+                        label={`UNDO ${it}`}
+                        onClick={() => undoDeletion(it)}
+                    />
+                ))}
             </div>
             <div
                 style={{

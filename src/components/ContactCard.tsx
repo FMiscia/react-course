@@ -9,7 +9,6 @@ import useIsOnline from '../hooks/useIsOnline'
 function ContactCardNoMemo({ name, email, notes, phone, id, onEdit, onDelete }: ContactCardProps) {
     const [isEdit, setIsEdit] = useState(false)
     const isOnline = useIsOnline()
-    console.log('rendering card')
     return isEdit ? (
         <Card className="App-ContactCard">
             <ContactCardForm
