@@ -1,9 +1,11 @@
 import { ButtonHTMLAttributes } from 'react'
 import './Button.css'
 
-function Button({ label, className, ...rest }: ButtonProps) {
+function Button({ label, className, secondary = false, ...rest }: ButtonProps) {
     return (
-        <button className={`App-Button ${className ?? ''}`} {...rest}>
+        <button
+            className={`App-Button ${secondary && 'App-Button-Secondary '}${className ?? ''}`}
+            {...rest}>
             {label}
         </button>
     )
@@ -11,6 +13,7 @@ function Button({ label, className, ...rest }: ButtonProps) {
 
 type ButtonProps = {
     label: string
+    secondary?: boolean
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 export default Button
