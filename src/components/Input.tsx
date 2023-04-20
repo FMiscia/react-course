@@ -1,8 +1,7 @@
 import { InputHTMLAttributes } from 'react'
 import './Input.css'
 
-function Input({label, className, ...inputProps}: InputProps) {
-
+function Input({ label, className, ...inputProps }: InputProps) {
     return (
         <div className={`App-Input ${className ?? ''}`}>
             <div className="InputLabel">{label}</div>

@@ -10,7 +10,7 @@ function ContactCard({ name, email, notes, phone, id, onEdit, onDelete }: Contac
     const [isEdit, setIsEdit] = useState(false)
     const isOnline = useIsOnline()
     return isEdit ? (
-        <Card className='App-ContactCard'>
+        <Card className="App-ContactCard">
             <ContactCardForm
                 initialValues={{ email, name, notes, phone, id }}
                 disabled={!isOnline}
@@ -22,7 +22,7 @@ function ContactCard({ name, email, notes, phone, id, onEdit, onDelete }: Contac
             <Button style={{ marginTop: '4px' }} onClick={() => setIsEdit(false)} label="CLOSE" />
         </Card>
     ) : (
-        <Card className='App-ContactCard'>
+        <Card className="App-ContactCard">
             <h3>{name}</h3>
             <p>{email}</p>
             <p>{phone}</p>

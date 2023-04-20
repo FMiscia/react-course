@@ -4,7 +4,9 @@ import contactsReducer, { ContactsAction } from '../reducers/contactsReducer'
 import { ContactModel } from '../types'
 
 export const ContactsStoreContext = React.createContext<ContactModel[]>([])
-export const ContactsDispatchContext = React.createContext<React.Dispatch<ContactsAction>>(() => {})
+export const ContactsDispatchContext = React.createContext<React.Dispatch<ContactsAction>>(
+    () => null
+)
 
 function ContactsContextProvider({ children }: PropsWithChildren) {
     const [list, dispatch] = useReducer(contactsReducer, contacts)

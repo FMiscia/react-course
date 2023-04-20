@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import useIsOnline from '../../hooks/useIsOnline'
 import { ContactModel } from '../../types'
 import { uid } from '../../utils'
 import Button from '../Button'
@@ -39,7 +38,7 @@ function ContactCardForm({ initialValues, onSubmit, disabled = false }: ContactC
                 label="Notes"
             />
             <Button
-                label={!disabled ? "SALVA" : "DISABLED"}
+                label={!disabled ? 'SALVA' : 'DISABLED'}
                 disabled={disabled}
                 onClick={() => {
                     const contact = {

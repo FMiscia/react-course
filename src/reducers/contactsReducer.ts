@@ -1,4 +1,4 @@
-import { ContactModel } from "../types"
+import { ContactModel } from '../types'
 
 export enum ContactActionTypes {
     'contacts_ADD',
