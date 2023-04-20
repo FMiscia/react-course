@@ -1,4 +1,4 @@
-import { memo, useState } from 'react'
+import { memo, useRef, useState } from 'react'
 import { ContactModel } from '../../types'
 import { uid } from '../../utils'
 import Button from '../Button'
@@ -14,9 +14,16 @@ function ContactCardFormNoMemo({
     const [email, setEmail] = useState(initialValues?.email ?? '')
     const [phone, setPhone] = useState(initialValues?.phone ?? '')
     const [notes, setNotes] = useState(initialValues?.notes ?? '')
+    const inputRef = useRef<HTMLInputElement>(null)
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+            <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Test"
+                ref={inputRef}
+            />
             <Input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -52,6 +59,7 @@ function ContactCardFormNoMemo({
                         phone,
                         notes
                     }
+                    inputRef.current?.focus()
                     onSubmit(contact)
                 }}
             />
