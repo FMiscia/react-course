@@ -5,22 +5,29 @@ import Card from './Card'
 import './ContactCard.css'
 import ContactCardForm from './forms/ContactCardForm'
 import useIsOnline from '../hooks/useIsOnline'
+import Modal from './Modal'
 
 function ContactCardNoMemo({ name, email, notes, phone, id, onEdit, onDelete }: ContactCardProps) {
     const [isEdit, setIsEdit] = useState(false)
     const isOnline = useIsOnline()
     return isEdit ? (
-        <Card className="App-ContactCard">
-            <ContactCardForm
-                initialValues={{ email, name, notes, phone, id }}
-                disabled={!isOnline}
-                onSubmit={(model) => {
-                    setIsEdit(false)
-                    onEdit?.(model)
-                }}
-            />
-            <Button style={{ marginTop: '4px' }} onClick={() => setIsEdit(false)} label="CLOSE" />
-        </Card>
+        <Modal visible={isEdit}>
+            <Card className="App-ContactCard">
+                <ContactCardForm
+                    initialValues={{ email, name, notes, phone, id }}
+                    disabled={!isOnline}
+                    onSubmit={(model) => {
+                        setIsEdit(false)
+                        onEdit?.(model)
+                    }}
+                />
+                <Button
+                    style={{ marginTop: '4px' }}
+                    onClick={() => setIsEdit(false)}
+                    label="CLOSE"
+                />
+            </Card>
+        </Modal>
     ) : (
         <Card className="App-ContactCard">
             <h3>{name}</h3>
