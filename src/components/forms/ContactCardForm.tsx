@@ -49,6 +49,7 @@ function ContactCardFormNoMemo({
                 onClick={() => {
                     if (!name) {
                         inputRef.current?.focus()
+                        return
                     }
                     const contact = {
                         id: initialValues?.id ?? uid(),

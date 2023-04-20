@@ -1,4 +1,4 @@
-import { TextareaHTMLAttributes } from 'react'
+import { ComponentPropsWithoutRef } from 'react'
 import './TextArea.css'
 
 function TextArea({ label, className, ...textAreaProps }: TextAreaProps) {
@@ -12,6 +12,6 @@ function TextArea({ label, className, ...textAreaProps }: TextAreaProps) {
 
 type TextAreaProps = {
     label?: string
-} & TextareaHTMLAttributes<HTMLTextAreaElement>
+} & ComponentPropsWithoutRef<'textarea'>
 
 export default TextArea

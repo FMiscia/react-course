@@ -40,3 +40,16 @@ Each macro section of the course has its own branch, and, inside the branch, eve
 	- Hooks concepts
 	- Creation of useIsOnline hook
 	- How to handle componentUpdate events
+
+## 2. Final Concepts [branch feat/intermediate-concepts]
+
+- Optimization
+	- Inefficient computation
+	- useMemo hook
+	- memo decorator
+	- useCallback
+- Ref
+	- useRef for variables
+	- useRef for HtmlElement
+	- forwardRef decorator
+	- ComponentProps(With/Without)Ref<?> type

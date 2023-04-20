@@ -1,7 +1,11 @@
-import { HTMLAttributes, PropsWithChildren } from 'react'
+import { ComponentPropsWithoutRef, PropsWithChildren } from 'react'
 import './Card.css'
 
-function Card({ className, children, ...rest }: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
+function Card({
+    className,
+    children,
+    ...rest
+}: PropsWithChildren<ComponentPropsWithoutRef<'div'>>) {
     return (
         <div className={`App-Card ${className ?? ''}`} {...rest}>
             {children}

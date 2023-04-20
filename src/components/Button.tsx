@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react'
+import { ComponentPropsWithoutRef } from 'react'
 import './Button.css'
 
 function Button({ label, className, secondary = false, ...rest }: ButtonProps) {
@@ -14,6 +14,6 @@ function Button({ label, className, secondary = false, ...rest }: ButtonProps) {
 type ButtonProps = {
     label: string
     secondary?: boolean
-} & ButtonHTMLAttributes<HTMLButtonElement>
+} & ComponentPropsWithoutRef<'button'>
 
 export default Button
