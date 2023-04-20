@@ -41,7 +41,7 @@ Each macro section of the course has its own branch, and, inside the branch, eve
 	- Creation of useIsOnline hook
 	- How to handle componentUpdate events
 
-## 2. Final Concepts [branch feat/intermediate-concepts]
+## 3. Final Concepts [branch feat/final-concepts]
 
 - Optimization
 	- Inefficient computation
@@ -53,3 +53,5 @@ Each macro section of the course has its own branch, and, inside the branch, eve
 	- useRef for HtmlElement
 	- forwardRef decorator
 	- ComponentProps(With/Without)Ref<?> type
+- Portals [Optional]
+	- Modal Component
