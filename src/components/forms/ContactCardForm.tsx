@@ -18,17 +18,12 @@ function ContactCardFormNoMemo({
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-            <input
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Test"
-                ref={inputRef}
-            />
             <Input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Name"
                 label="Name"
+                ref={inputRef}
             />
             <Input
                 value={email}
@@ -52,6 +47,9 @@ function ContactCardFormNoMemo({
                 label={!disabled ? 'SALVA' : 'DISABLED'}
                 disabled={disabled}
                 onClick={() => {
+                    if (!name) {
+                        inputRef.current?.focus()
+                    }
                     const contact = {
                         id: initialValues?.id ?? uid(),
                         name,
@@ -59,7 +57,6 @@ function ContactCardFormNoMemo({
                         phone,
                         notes
                     }
-                    inputRef.current?.focus()
                     onSubmit(contact)
                 }}
             />

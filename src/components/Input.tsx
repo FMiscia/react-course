@@ -1,17 +1,22 @@
-import { InputHTMLAttributes } from 'react'
+import { ComponentPropsWithRef, LegacyRef, forwardRef } from 'react'
 import './Input.css'
 
-function Input({ label, className, ...inputProps }: InputProps) {
+function InputWithRef(
+    { label, className, ...inputProps }: InputProps,
+    ref: LegacyRef<HTMLInputElement>
+) {
     return (
         <div className={`App-Input ${className ?? ''}`}>
             <div className="InputLabel">{label}</div>
-            <input {...inputProps} />
+            <input ref={ref} {...inputProps} />
         </div>
     )
 }
 
+const Input = forwardRef(InputWithRef)
+
 type InputProps = {
     label?: string
-} & InputHTMLAttributes<HTMLInputElement>
+} & ComponentPropsWithRef<'input'>
 
 export default Input
