@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useMemo, useState } from 'react'
 import ContactCard from '../components/ContactCard'
 import { ContactModel } from '../types'
 import ContactCardForm from '../components/forms/ContactCardForm'
@@ -14,7 +14,7 @@ function Contacts() {
     const isOnline = useIsOnline()
     const [sorting, setSorting] = useState<'natural' | 'ascending' | 'descending'>('natural')
     const [count, setCount] = useState(0)
-    const currentList = () => {
+    const currentList = useMemo(() => {
         console.log('computing')
         const newList = [...list]
         if (sorting === 'natural') {
@@ -29,7 +29,7 @@ function Contacts() {
             }
             return 0
         })
-    }
+    }, [list, sorting])
 
     const createContact = (model: ContactModel) => {
         dispatch({ type: ContactActionTypes.contacts_ADD, payload: model })
@@ -85,7 +85,7 @@ function Contacts() {
                     flexDirection: 'row',
                     flexWrap: 'wrap'
                 }}>
-                {currentList().map((it) => {
+                {currentList.map((it) => {
                     return (
                         <ContactCard
                             key={it.id}
