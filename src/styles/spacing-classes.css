@@ -1,0 +1,199 @@
+.std .margin-xs {
+    margin: var(--std-gutter-xs);
+}
+
+.std .margin-s {
+    margin: var(--std-gutter-s);
+}
+
+.std .margin-m {
+    margin: var(--std-gutter-m);
+}
+
+.std .margin-l {
+    margin: var(--std-gutter-l);
+}
+
+.std .margin-xl {
+    margin: var(--std-gutter-xl);
+}
+
+.std .margin-left-xs {
+    margin-left: var(--std-gutter-xs);
+}
+
+.std .margin-left-s {
+    margin-left: var(--std-gutter-s);
+}
+
+.std .margin-left-m {
+    margin-left: var(--std-gutter-m);
+}
+
+.std .margin-left-l {
+    margin-left: var(--std-gutter-l);
+}
+
+.std .margin-left-xl {
+    margin-left: var(--std-gutter-xl);
+}
+
+.std .margin-right-xs {
+    margin-right: var(--std-gutter-xs);
+}
+
+.std .margin-right-s {
+    margin-right: var(--std-gutter-s);
+}
+
+.std .margin-right-m {
+    margin-right: var(--std-gutter-m);
+}
+
+.std .margin-right-l {
+    margin-right: var(--std-gutter-l);
+}
+
+.std .margin-right-xl {
+    margin-right: var(--std-gutter-xl);
+}
+
+.std .margin-top-xs {
+    margin-top: var(--std-gutter-xs);
+}
+
+.std .margin-top-s {
+    margin-top: var(--std-gutter-s);
+}
+
+.std .margin-top-m {
+    margin-top: var(--std-gutter-m);
+}
+
+.std .margin-top-l {
+    margin-top: var(--std-gutter-l);
+}
+
+.std .margin-top-xl {
+    margin-top: var(--std-gutter-xl);
+}
+
+.std .margin-bottom-xs {
+    margin-bottom: var(--std-gutter-xs);
+}
+
+.std .margin-bottom-s {
+    margin-bottom: var(--std-gutter-s);
+}
+
+.std .margin-bottom-m {
+    margin-bottom: var(--std-gutter-m);
+}
+
+.std .margin-bottom-l {
+    margin-bottom: var(--std-gutter-l);
+}
+
+.std .margin-bottom-xl {
+    margin-bottom: var(--std-gutter-xl);
+}
+
+.std .padding-xs {
+    padding: var(--std-gutter-xs);
+}
+
+.std .padding-s {
+    padding: var(--std-gutter-s);
+}
+
+.std .padding-m {
+    padding: var(--std-gutter-m);
+}
+
+.std .padding-l {
+    padding: var(--std-gutter-l);
+}
+
+.std .padding-xl {
+    padding: var(--std-gutter-xl);
+}
+
+.std .padding-left-xs {
+    padding-left: var(--std-gutter-xs);
+}
+
+.std .padding-left-s {
+    padding-left: var(--std-gutter-s);
+}
+
+.std .padding-left-m {
+    padding-left: var(--std-gutter-m);
+}
+
+.std .padding-left-l {
+    padding-left: var(--std-gutter-l);
+}
+
+.std .padding-left-xl {
+    padding-left: var(--std-gutter-xl);
+}
+
+.std .padding-right-xs {
+    padding-right: var(--std-gutter-xs);
+}
+
+.std .padding-right-s {
+    padding-right: var(--std-gutter-s);
+}
+
+.std .padding-right-m {
+    padding-right: var(--std-gutter-m);
+}
+
+.std .padding-right-l {
+    padding-right: var(--std-gutter-l);
+}
+
+.std .padding-right-xl {
+    padding-right: var(--std-gutter-xl);
+}
+
+.std .padding-top-xs {
+    padding-top: var(--std-gutter-xs);
+}
+
+.std .padding-top-s {
+    padding-top: var(--std-gutter-s);
+}
+
+.std .padding-top-m {
+    padding-top: var(--std-gutter-m);
+}
+
+.std .padding-top-l {
+    padding-top: var(--std-gutter-l);
+}
+
+.std .padding-top-xl {
+    padding-top: var(--std-gutter-xl);
+}
+
+.std .padding-bottom-xs {
+    padding-bottom: var(--std-gutter-xs);
+}
+
+.std .padding-bottom-s {
+    padding-bottom: var(--std-gutter-s);
+}
+
+.std .padding-bottom-m {
+    padding-bottom: var(--std-gutter-m);
+}
+
+.std .padding-bottom-l {
+    padding-bottom: var(--std-gutter-l);
+}
+
+.std .padding-bottom-xl {
+    padding-bottom: var(--std-gutter-xl);
+}

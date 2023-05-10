@@ -1,0 +1,57 @@
+@import url('./theme.css');
+@import url('./flex-classes.css');
+@import url('./spacing-classes.css');
+@import url('./radius-classes.css');
+
+.std .background {
+    background-color: var(--std-color-bg);
+}
+
+.std .fill-v {
+    min-height: 100vh;
+}
+
+.std .fill-h {
+    min-width: 100vw;
+}
+
+.std .elevation-s {
+    box-shadow: var(--std-shadow-s);
+}
+
+.std .elevation-m {
+    box-shadow: var(--std-shadow-m);
+}
+
+.std .elevation-l {
+    box-shadow: var(--std-shadow-l);
+}
+
+.std .font-bold {
+    font-weight: bold;
+}
+
+.std .font-light {
+    font-weight: 300;
+}
+
+.std .font-thin {
+    font-weight: 100;
+}
+
+.std .hover:hover {
+    background-color: var(--std-color-hover);
+}
+
+.std .fade-in {
+    animation: fadein 1s;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

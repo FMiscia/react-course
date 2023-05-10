@@ -1,4 +1,4 @@
-.App-ContactCard {
+.App-ProductCard {
     display: flex;
     flex-direction: column;
     width: 270px;
@@ -8,6 +8,7 @@
     text-align: center;
 }
 
-.App-ContactCard .ContactCardNotes {
+.App-ProductCard .ProductCardNotes {
+    flex-grow: 1;
     white-space: pre-wrap;
 }

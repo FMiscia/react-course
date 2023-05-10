@@ -1,0 +1,35 @@
+.std .flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.std .flex-row-wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.std .flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.std .justify-center {
+    justify-content: center;
+}
+
+.std .justify-between {
+    justify-content: space-between;
+}
+
+.std .justify-end {
+    justify-content: flex-end;
+}
+
+.std .justify-start {
+    justify-content: flex-start;
+}
+
+.std .align-center {
+    align-items: center;
+}
